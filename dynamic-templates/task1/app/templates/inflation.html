@@ -1,4 +1,5 @@
-<!DOCTYPE html>{% load static %}
+{% load filters %}
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8">
@@ -17,9 +18,34 @@
       <div class="row">
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
-        
-        <!-- Ваша логика -->
-
+          <table>
+            <thead>
+              <tr>
+                {% for cell in table_header %}
+                  {% if forloop.last %}
+                    <th bgcolor="#808080">{{ cell }}</th>
+                  {% else %}
+                    <th>{{ cell }}</th>
+                  {% endif %}
+                {% endfor %}
+              </th>
+            </thead>
+            <thead>
+            {% for line in table_body %}
+              <tr>
+                {% for cell in line%}
+                  {% if forloop.first %}
+                    <td>{{ cell }}</td>
+                  {% elif forloop.last %}
+                    <td bgcolor="#808080">{{cell}}</td>
+                  {% else %}
+                    <td bgcolor="{{ cell|cell_color }}">{{ cell }}</td>
+                  {% endif %}
+                {% endfor %}
+              </tr>
+            {% endfor %}
+            </thead>
+          </table>
         </div>
       </div>
     {% endblock %}
