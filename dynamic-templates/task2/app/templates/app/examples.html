@@ -1,1 +1,13 @@
-{% include 'app/includes.html' %}
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Примеры{% endblock %}
+{% block content %}
+    <div class="row">
+      <div class="col s12">
+        <h1 class="col s12">Каталог компьютеров Apple</h1>
+        {% for item in items%}
+        {% include 'app/includes.html' %}
+        {% endfor %}
+      </div>
+    </div>
+{% endblock %}
