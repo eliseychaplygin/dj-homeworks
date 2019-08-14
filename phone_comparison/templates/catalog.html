@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Сравнение телефонов</h1>
+        </div>
+        <table>
+            <tr>
+                <td>Модель:</td>
+                {% for phone in Phones %}
+                    <td>{{ phone.name_model }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Стоимость:</td>
+                {% for phone in Phones %}
+                    <td>{{ phone.cost }}</td>
+                {% endfor %}
+            </tr>
+             <tr>
+                <td>Операционная система:</td>
+                {% for phone in Phones %}
+                    <td>{{ phone.os }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Размер хранилища:</td>
+                {% for phone in Phones %}
+                    <td>{{ phone.storage }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Оперативная память:</td>
+                {% for phone in Phones %}
+                    <td>{{ phone.ram }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Размер дисплея:</td>
+                {% for phone in Phones %}
+                    <td>{{ phone.display_size }}</td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Touch-id:</td>
+                {% for phone in Additional %}
+                    {% if phone.touch_id %}
+                        <td>{{ phone.touch_id }}</td>
+                    {% else %}
+                        <td>-</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            <tr>
+                <td>Количесво симкарт:</td>
+                {% for phone in Additional %}
+                    {% if phone.amount_sim_card %}
+                        <td>{{ phone.amount_sim_card }}</td>
+                    {% else %}
+                        <td>-</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+{% endblock %}
